@@ -45,7 +45,7 @@ public class VelocityConnector implements HandlerInterceptor
 
             modelAndView.addObject("userId", account.getId());
             modelAndView.addObject("userName", account.getUserName());
-            modelAndView.addObject("isAdmin", account.hasPermission("access.acp"));
+            modelAndView.addObject("isAdmin", account.hasPermission("acp.access"));
         }
     }
 

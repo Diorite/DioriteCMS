@@ -18,7 +18,7 @@ import org.diorite.web.cms.models.StaticPage;
 
 @Controller
 @RequestMapping("/admin/pages")
-@PreAuthorize("isAuthenticated() and principal.hasPermission('access.acp')")
+@PreAuthorize("isAuthenticated() and principal.hasPermission('acp.access')")
 public class AdminPagesController
 {
     @Autowired

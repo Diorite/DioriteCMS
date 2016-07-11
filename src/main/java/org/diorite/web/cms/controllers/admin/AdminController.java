@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin")
-@PreAuthorize("isAuthenticated() and principal.hasPermission('access.acp')")
+@PreAuthorize("isAuthenticated() and principal.hasPermission('acp.access')")
 public class AdminController
 {
     @RequestMapping(path = {"", "/"})
