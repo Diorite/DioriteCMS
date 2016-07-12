@@ -9,7 +9,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.diorite.web.cms.core.DioriteCms;
 import org.diorite.web.cms.pages.DefaultProvidersRegister;
 import org.diorite.web.cms.pages.IPagesProvider;
 import org.diorite.web.cms.pages.Page;
@@ -17,8 +16,6 @@ import org.diorite.web.cms.pages.Page;
 @Service
 public class PagesService
 {
-    @Autowired
-    private       DioriteCms                      cms;
     private final HashMap<String, IPagesProvider> providers;
 
     @Autowired
@@ -46,6 +43,6 @@ public class PagesService
     @Override
     public String toString()
     {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).appendSuper(super.toString()).append("cms", this.cms).append("providers", this.providers).toString();
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).appendSuper(super.toString()).append("providers", this.providers).toString();
     }
 }
