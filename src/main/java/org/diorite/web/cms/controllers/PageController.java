@@ -19,8 +19,8 @@ import org.diorite.web.cms.models.Account;
 import org.diorite.web.cms.models.StaticPage;
 
 @Controller
-/**
- * This controller handles all requests to static pages
+/*
+  This controller handles all requests to static pages
  */
 public class PageController
 {

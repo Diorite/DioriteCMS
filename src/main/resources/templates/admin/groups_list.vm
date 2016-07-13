@@ -1,0 +1,41 @@
+#parse("/templates/fragments/_general_header.vm")
+<body>
+    #parse("/templates/fragments/_general_menu.vm")
+    <div class="container row">
+        #parse("/templates/fragments/_admin_menu.vm")
+
+        <div class="col s11">
+            <div class="valign-wrapper">
+                <div class="col s10 valign"><h4>Browsing groups list</h4></div>
+                <div class="col s2 valign right"><a href="/admin/groups/new" class="waves-effect waves-light btn"><i class="material-icons right">add</i>New</a></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th data-field="id">Display name</th>
+                        <th data-field="name">Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    #foreach ($group in $groups)
+                    <tr id="group-entry-$page.getId()">
+                        <td>$group.getFancyName()</td>
+
+                        <td>
+                            <a href="/admin/groups/$group.getId()"><i class="material-icons">mode_edit</i></a>
+                            #if (!$group.isSpecial())
+                                <a href="#" onclick="deleteGroup($group.getId()); return false;"><i class="material-icons">delete</i></a>
+                            #end
+                        </td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+#parse("/templates/fragments/_general_footer.vm")

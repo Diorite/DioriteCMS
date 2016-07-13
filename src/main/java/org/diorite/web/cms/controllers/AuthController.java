@@ -34,7 +34,7 @@ public class AuthController
     @RequestMapping(value = "/access_denied")
     public String accessDenied(final Model model)
     {
-        model.addAttribute("status", "Internal Permissions");
+        model.addAttribute("status", "403");
         model.addAttribute("error", "You don't have permissions to access this page!");
         return "error";
     }

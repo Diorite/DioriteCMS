@@ -24,3 +24,14 @@ function setStaticPageFrame(pageId, value)
 {
     $.post("/admin/pages/" + pageId, {"frame": value});
 }
+
+/**
+ * Sends DELETE request to CMS and removes group from list
+ */
+function deleteGroup(groupId)
+{
+    $.ajax({url:"/admin/groups/" + groupId, type:"DELETE", success: function(result)
+    {
+        $("#group-entry-" + pageId).remove();
+    }});
+}
