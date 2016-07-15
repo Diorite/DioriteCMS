@@ -1,7 +1,5 @@
 package org.diorite.web.cms.permissions;
 
-import java.util.Collections;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -45,7 +43,7 @@ public class DioriteAuthenticationProvider implements AuthenticationProvider
 
         if (account.getPassword().equals(password))
         {
-            return new UsernamePasswordAuthenticationToken(account, password, Collections.singletonList(account.getGroup()));
+            return new UsernamePasswordAuthenticationToken(account, password, account.getAuthorities());
         }
         else
         {
@@ -60,7 +58,7 @@ public class DioriteAuthenticationProvider implements AuthenticationProvider
         {
             return true;
         }
-        cms.getLogger().warning("Unsupported authentication method: " + aClass);
+        this.cms.getLogger().warning("Unsupported authentication method: " + aClass);
         return false;
     }
 

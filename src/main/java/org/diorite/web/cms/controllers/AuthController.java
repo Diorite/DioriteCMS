@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.security.Principal;
 
+import com.google.common.collect.Sets;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -80,7 +82,7 @@ public class AuthController
             return "forms/register";
         }
 
-        final Account account = new Account(user, null, email, password, this.groupRepository.findOne(1));
+        final Account account = new Account(user, null, email, password, Sets.newHashSet(this.groupRepository.findOne(1)));
         this.accountRepository.saveAndFlush(account);
 
         return "redirect:/";

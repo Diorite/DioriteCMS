@@ -32,6 +32,14 @@ function deleteGroup(groupId)
 {
     $.ajax({url:"/admin/groups/" + groupId, type:"DELETE", success: function(result)
     {
-        $("#group-entry-" + pageId).remove();
+        $("#group-entry-" + groupId).remove();
     }});
+}
+
+/**
+ *
+ */
+function setPermission(groupId, permission, value)
+{
+    $.post("/admin/groups/" + groupId, {"permission": permission, "value": value});
 }

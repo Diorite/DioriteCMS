@@ -1,0 +1,57 @@
+#parse("/templates/fragments/_general_header.vm")
+<body>
+    #parse("/templates/fragments/_general_menu.vm")
+    <div class="container row">
+        #parse("/templates/fragments/_admin_menu.vm")
+
+        <div class="col s11">
+            <div class="row">
+                <div class="col s12 valign"><h4>Editing group</h4></div>
+            </div>
+            <div class="divider"></div>
+
+            <form class="row valign-wrapper" action="/admin/groups/$group.getId()" method="post">
+                <div class="input-field col s10">
+                    <input name="name" id="name" type="text" value="$group.getDisplayName()">
+                    <label for="name">Group name</label>
+                </div>
+
+                <div class="col s2">
+                    <input type="submit" class="waves-effect waves-light btn" value="Save name">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s12">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th data-field="has"></th>
+                                <th data-field="name">Permission description</th>
+                                <th data-field="id">Permission Id</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            #foreach ($permission in $permissions)
+                            #set ($pname = $permission.getName())
+
+                            <tr>
+                                <td>
+                                    <input id="perm-$pname" type="checkbox" #printIfTrue($group.hasPermission($permission) "checked") onclick="setPermission($group.getId(), '$pname', this.checked)">
+                                    <label for="perm-$pname"></label>
+                                </td>
+
+                                <td>$permission.getDisplayName()</td>
+
+                                <td>$permission.getName()</td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+#parse("/templates/fragments/_general_footer.vm")

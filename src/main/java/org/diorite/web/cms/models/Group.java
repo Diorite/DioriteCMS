@@ -26,7 +26,7 @@ public class Group implements GrantedAuthority, PermissionsHolder, PermissionsGr
     @Id
     @GeneratedValue
     private int             id;
-    private String          fancyName;
+    private String          displayName;
     private boolean         isSpecial;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Permission> permissions;
@@ -41,14 +41,14 @@ public class Group implements GrantedAuthority, PermissionsHolder, PermissionsGr
         return String.valueOf(this.id);
     }
 
-    public String getFancyName()
+    public String getDisplayName()
     {
-        return this.fancyName;
+        return this.displayName;
     }
 
-    public void setFancyName(final String fancyName)
+    public void setDisplayName(final String displayName)
     {
-        this.fancyName = fancyName;
+        this.displayName = displayName;
     }
 
     public int getId()
@@ -103,7 +103,7 @@ public class Group implements GrantedAuthority, PermissionsHolder, PermissionsGr
 
         final Group group = (Group) o;
 
-        return this.id == group.id && (this.fancyName != null ? this.fancyName.equals(group.fancyName) : group.fancyName == null && this.permissions.equals(group.permissions));
+        return this.id == group.id && (this.displayName != null ? this.displayName.equals(group.displayName) : group.displayName == null && this.permissions.equals(group.permissions));
 
     }
 
@@ -111,7 +111,7 @@ public class Group implements GrantedAuthority, PermissionsHolder, PermissionsGr
     public int hashCode()
     {
         int result = this.id;
-        result = 31 * result + (this.fancyName != null ? this.fancyName.hashCode() : 0);
+        result = 31 * result + (this.displayName != null ? this.displayName.hashCode() : 0);
         result = 31 * result + this.permissions.hashCode();
         return result;
     }
@@ -119,6 +119,6 @@ public class Group implements GrantedAuthority, PermissionsHolder, PermissionsGr
     @Override
     public String toString()
     {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).appendSuper(super.toString()).append("id", this.id).append("fancyName", this.fancyName).append("permissions", this.permissions).toString();
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).appendSuper(super.toString()).append("id", this.id).append("displayName", this.displayName).append("permissions", this.permissions).toString();
     }
 }

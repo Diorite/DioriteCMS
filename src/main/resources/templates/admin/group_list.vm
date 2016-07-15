@@ -23,7 +23,7 @@
                 <tbody>
                     #foreach ($group in $groups)
                     <tr id="group-entry-$page.getId()">
-                        <td>$group.getFancyName()</td>
+                        <td>$group.getDisplayName()</td>
 
                         <td>
                             <a href="/admin/groups/$group.getId()"><i class="material-icons">mode_edit</i></a>

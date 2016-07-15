@@ -35,6 +35,17 @@ public class PermissionsTest
     }
 
     @Test
+    public void degrantingTest()
+    {
+        final Group group3 = this.groupRepository.findOne(3);
+        group3.removePermission("perm2");
+
+        assertEquals(false, group3.hasPermission("perm1"));
+        assertEquals(false, group3.hasPermission("perm2"));
+        assertEquals(false, group3.hasPermission("perm3"));
+    }
+
+    @Test
     public void grantingTest()
     {
         final Group group4 = this.groupRepository.findOne(4);
@@ -54,16 +65,5 @@ public class PermissionsTest
         assertEquals(true, group4.hasPermission("perm1"));
         assertEquals(true, group4.hasPermission("perm2"));
         assertEquals(true, group4.hasPermission("perm3"));
-    }
-
-    @Test
-    public void degrantingTest()
-    {
-        final Group group3 = this.groupRepository.findOne(3);
-        group3.removePermission("perm2");
-
-        assertEquals(false, group3.hasPermission("perm1"));
-        assertEquals(false, group3.hasPermission("perm2"));
-        assertEquals(false, group3.hasPermission("perm3"));
     }
 }
